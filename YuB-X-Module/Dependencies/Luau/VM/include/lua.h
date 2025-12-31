@@ -13,26 +13,19 @@ struct RobloxExtraSpace
 {
     struct Shared
     {
-        std::int32_t ThreadCount;
+        char Pad0[0x20];
         void* ScriptContext;
-        void* ScriptVmState;
     };
 
-    RobloxExtraSpace* Previous;
-    std::size_t Count;
-    RobloxExtraSpace* Next;
+    char Pad1[0x18];
     struct Shared* SharedExtraSpace;
-    char pad__32[16];
+    char Pad2[0x10];
     std::int32_t Identity;
-    char pad_0034[16];
+    char Pad3[0x1C];
     uintptr_t Capabilities;
+    char Pad4[0x28];
     std::weak_ptr<uintptr_t> Script;
-    std::weak_ptr<uintptr_t> Actor;
-    std::unique_ptr<uintptr_t> Continuations;
-    bool GlobalActorState;
 };
-
-
 
 // option for multiple returns in `lua_pcall' and `lua_call'
 #define LUA_MULTRET (-1)
@@ -225,6 +218,7 @@ LUA_API int lua_getfield(lua_State* L, int idx, const char* k);
 LUA_API int lua_rawgetfield(lua_State* L, int idx, const char* k);
 LUA_API int lua_rawget(lua_State* L, int idx);
 LUA_API int lua_rawgeti(lua_State* L, int idx, int n);
+LUA_API int lua_rawgetptagged(lua_State* L, int idx, void* p, int tag);
 LUA_API void lua_createtable(lua_State* L, int narr, int nrec);
 
 LUA_API void lua_setreadonly(lua_State* L, int idx, int enabled);
@@ -242,6 +236,7 @@ LUA_API void lua_setfield(lua_State* L, int idx, const char* k);
 LUA_API void lua_rawsetfield(lua_State* L, int idx, const char* k);
 LUA_API void lua_rawset(lua_State* L, int idx);
 LUA_API void lua_rawseti(lua_State* L, int idx, int n);
+LUA_API void lua_rawsetptagged(lua_State* L, int idx, void* p, int tag);
 LUA_API int lua_setmetatable(lua_State* L, int objindex);
 LUA_API int lua_setfenv(lua_State* L, int idx);
 
@@ -407,6 +402,9 @@ LUA_API void lua_unref(lua_State* L, int ref);
 #define lua_pushcclosure(L, fn, debugname, nup) lua_pushcclosurek(L, fn, debugname, nup, NULL)
 #define lua_pushlightuserdata(L, p) lua_pushlightuserdatatagged(L, p, 0)
 
+#define lua_rawgetp(L, idx, p) lua_rawgetptagged(L, idx, p, 0)
+#define lua_rawsetp(L, idx, p) lua_rawsetptagged(L, idx, p, 0)
+
 #define lua_setglobal(L, s) lua_setfield(L, LUA_GLOBALSINDEX, (s))
 #define lua_getglobal(L, s) lua_getfield(L, LUA_GLOBALSINDEX, (s))
 
@@ -468,20 +466,16 @@ struct lua_Debug
  * can only be changed when the VM is not running any code */
 struct lua_Callbacks
 {
-    void* userdata; // arbitrary userdata pointer that is never overwritten by Luau
-
-    void (*interrupt)(lua_State* L, int gc);  // gets called at safepoints (loop back edges, call/ret, gc) if set
-    void (*panic)(lua_State* L, int errcode); // gets called when an unprotected error is raised (if longjmp is used)
-
-    void (*userthread)(lua_State* LP, lua_State* L); // gets called when L is created (LP == parent) or destroyed (LP == NULL)
-    int16_t (*useratom)(const char* s, size_t l);    // gets called when a string is created; returned atom can be retrieved via tostringatom
-
-    void (*debugbreak)(lua_State* L, lua_Debug* ar);     // gets called when BREAK instruction is encountered
-    void (*debugstep)(lua_State* L, lua_Debug* ar);      // gets called after each instruction in single step mode
-    void (*debuginterrupt)(lua_State* L, lua_Debug* ar); // gets called when thread execution is interrupted by break in another thread
-    void (*debugprotectederror)(lua_State* L);           // gets called when protected call results in an error
-
-    void (*onallocate)(lua_State* L, size_t osize, size_t nsize); // gets called when memory is allocated
+    void* userdata;
+    void (*userthread)(lua_State* LP, lua_State* L); // 0x8
+    void (*panic)(lua_State* L, int errcode);
+    int16_t(*useratom)(const char* s, size_t l); // 0x18
+    void (*onallocate)(lua_State* L, size_t osize, size_t nsize); // 0x20
+    void (*debuginterrupt)(lua_State* L, lua_Debug* ar); // 0x28
+    void (*debugbreak)(lua_State* L, lua_Debug* ar);
+    void (*interrupt)(lua_State* L, int gc); // 0x38
+    void (*debugstep)(lua_State* L, lua_Debug* ar);
+    void (*debugprotectederror)(lua_State* L); // 0x48
 };
 typedef struct lua_Callbacks lua_Callbacks;
 

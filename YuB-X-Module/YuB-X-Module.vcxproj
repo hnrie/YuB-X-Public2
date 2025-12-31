@@ -136,6 +136,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(ProjectDir)Dependencies\Luau\Compiler\include;$(ProjectDir)Dependencies\Luau\Common\include;$(ProjectDir)Dependencies\Luau\Ast\include;$(ProjectDir)Dependencies\Luau\VM\include;$(ProjectDir)Dependencies\Luau\VM\src;$(ProjectDir)Dependencies\Luau;$(ProjectDir);$(ProjectDir)Dependencies\cpr\include;$(ProjectDir)Dependencies\curl\include;$(ProjectDir)Dependencies;$(ProjectDir)Dependencies\Zstd\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

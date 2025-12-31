@@ -18,7 +18,7 @@ typedef union GCObject GCObject;
 */
 // clang-format off
 #define CommonHeader \
-     LUAU_SHUFFLE3(LUAU_SEMICOLON_SEP, uint8_t tt, uint8_t marked, uint8_t memcat)
+     uint8_t tt; uint8_t marked; uint8_t memcat
 // clang-format on
 
 /*
@@ -240,20 +240,12 @@ typedef TValue* StkId; // index to stack elements
 typedef struct TString
 {
     CommonHeader;
-    // 1 byte padding
-
-    int16_t atom;
-
-    // 2 byte padding
-
-    TString* next; // next string in the hash table bucket
-
-    TSTRING_HASH_ENC<unsigned int> hash;
-    unsigned int len;
-
-    char data[1]; // string data is allocated right after the header
+    int16_t atom; // 0x4
+    TString* next; // 0x8
+    TSTRING_HASH_ENC<unsigned int> hash; // 0x10
+    unsigned int len; // 0x14
+    char data[1]; // 0x18
 } TString;
-
 
 #define getstr(ts) (ts)->data
 #define svalue(o) getstr(tsvalue(o))
@@ -289,50 +281,37 @@ typedef struct LuauBuffer
 typedef struct Proto
 {
     CommonHeader;
-
-    LUAU_SHUFFLE5(LUAU_SEMICOLON_SEP,
-    uint8_t nups, // number of upvalues
-    uint8_t numparams,
-    uint8_t is_vararg,
-    uint8_t maxstacksize,
-    uint8_t flags);
-
-    TValue* k;              // constants used by the function
-    Instruction* code;      // function bytecode
-    LUAU_SHUFFLE2(LUAU_SEMICOLON_SEP,
-    struct Proto** p,       // functions defined inside the function
-    const Instruction* codeentry);
-
-    void* execdata;
-    uintptr_t exectarget;
-
-    LUAU_SHUFFLE5(LUAU_SEMICOLON_SEP,
-    PROTO_LINEINFO_ENC<uint8_t*> lineinfo,      // for each instruction, line number as a delta from baseline
-    PROTO_ABSLINEINFO_ENC<int*> abslineinfo,       // baseline line info, one entry for each 1<<linegaplog2 instructions; allocated after lineinfo
-    PROTO_LOCVARS_ENC<struct LocVar*> locvars, // information about local variables
-    PROTO_UPVALUES_ENC<TString**> upvalues,     // upvalue names
-    PROTO_SOURCE_ENC<TString*> source);
-
-    PROTO_DEBUGNAME_ENC<TString*> debugname;
-    PROTO_DEBUGINSN_ENC<uint8_t*> debuginsn; // a copy of code[] array with just opcodes
-
-    PROTO_TYPEINFO_ENC<uint8_t*> typeinfo;
-
-    PROTO_USERDATA_ENC<void*> userdata;
-
-    GCObject* gclist;
-
-    LUAU_SHUFFLE9(LUAU_SEMICOLON_SEP,
-    int sizecode,
-    int sizep,
-    int sizelocvars,
-    int sizeupvalues,
-    int sizek,
-    int sizelineinfo,
-    int linegaplog2,
-    int linedefined,
-    int bytecodeid);
-    int sizetypeinfo;
+    uint8_t is_vararg; // 0x3
+    uint8_t maxstacksize; // 0x4
+    uint8_t nups; // 0x5
+    uint8_t numparams; // 0x6
+    uint8_t flags; // 0x7
+    TValue* k; // 0x8
+    Instruction* code; // 0x10
+    PROTO_LINEINFO_ENC<uint8_t*> lineinfo; // 0x18
+    PROTO_LOCVARS_ENC<struct LocVar*> locvars; // 0x20
+    PROTO_SOURCE_ENC<TString*> source; // 0x28
+    PROTO_USERDATA_ENC<void*> userdata; // 0x30
+    struct Proto** p; // 0x38
+    const Instruction* codeentry; // 0x40
+    PROTO_UPVALUES_ENC<TString**> upvalues; // 0x48
+    PROTO_ABSLINEINFO_ENC<int*> abslineinfo; // 0x50
+    GCObject* gclist; // 0x58
+    PROTO_DEBUGINSN_ENC<uint8_t*> debuginsn; // 0x60
+    PROTO_DEBUGNAME_ENC<TString*> debugname; // 0x68
+    PROTO_TYPEINFO_ENC<uint8_t*> typeinfo; // 0x70
+    void* execdata; // 0x78
+    uintptr_t exectarget; // 0x80
+    int sizek; // 0x88
+    int linegaplog2; // 0x8C
+    int sizetypeinfo; // 0x90
+    int sizelineinfo; // 0x94
+    int sizecode; // 0x98
+    int sizelocvars; // 0x9C 
+    int bytecodeid; // 0xA0
+    int sizep; // 0xA4
+    int linedefined; // 0xA8
+    int sizeupvalues; // 0xAC
 } Proto;
 // clang-format on
 
@@ -376,33 +355,28 @@ typedef struct UpVal
 /*
 ** Closures
 */
-
 typedef struct Closure
 {
     CommonHeader;
-
-    uint8_t isC;
-    uint8_t nupvalues;
-    uint8_t stacksize;
-    uint8_t preload;
-
-    GCObject* gclist;
-    struct LuaTable* env;
-
+    uint8_t isC; // 0x3
+    uint8_t preload; // 0x4
+    uint8_t nupvalues; // 0x5
+    uint8_t stacksize; // 0x6
+    GCObject* gclist; // 0x8
+    struct LuaTable* env; // 0x10
     union
     {
         struct
         {
-            lua_CFunction f;
-            CLOSURE_CONT_ENC<lua_Continuation> cont;
-            CLOSURE_DEBUGNAME_ENC<const char*> debugname;
-            TValue upvals[1];
+            lua_CFunction f; // 0x18
+            CLOSURE_DEBUGNAME_ENC<const char*> debugname; // 0x20
+            CLOSURE_CONT_ENC<lua_Continuation> cont; // 0x28
+            TValue upvals[1]; // 0x30 
         } c;
-
         struct
         {
-            struct Proto* p;
-            TValue uprefs[1];
+            struct Proto* p; // 0x18
+            TValue uprefs[1]; // 0x30 
         } l;
     };
 } Closure;
@@ -454,26 +428,21 @@ typedef struct LuaNode
 typedef struct LuaTable
 {
     CommonHeader;
-
-    LUAU_SHUFFLE5(LUAU_SEMICOLON_SEP,
-    uint8_t tmcache,    // 1<<p means tagmethod(p) is not present
-    uint8_t readonly,   // sandboxing feature to prohibit writes to table
-    uint8_t safeenv,    // environment doesn't share globals with other scripts
-    uint8_t lsizenode,  // log2 of size of `node' array
-    uint8_t nodemask8); // (1<<lsizenode)-1, truncated to 8 bits
-
-    int sizearray; // size of `array' array
+    uint8_t tmcache; // 0x3
+    uint8_t safeenv;  // 0x4
+    uint8_t lsizenode; // 0x5
+    uint8_t nodemask8; // 0x6
+    uint8_t readonly; // 0x7
+    int sizearray; // 0x8
     union
     {
-        int lastfree;  // any free position is before this position
-        int aboundary; // negated 'boundary' of `array' array; iff aboundary < 0
+        int aboundary; // 0xC
+        int lastfree; // 0xC
     };
-
-    LUAU_SHUFFLE4(LUAU_SEMICOLON_SEP,
-    struct LuaTable* metatable,
-    TValue* array,  // array part
-    LuaNode* node,
-    GCObject* gclist);
+    LuaNode* node; // 0x10
+    GCObject* gclist; // 0x18
+    struct LuaTable* metatable; // 0x20
+    TValue* array; // 0x28
 } LuaTable;
 // clang-format on
 

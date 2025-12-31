@@ -31,18 +31,16 @@ const char* const luaT_typenames[] = {
 
 const char* const luaT_eventname[] = {
     // ORDER TM
-    LUAU_SHUFFLE7(LUAU_COMMA_SEP,
     "__index",
     "__newindex",
     "__mode",
     "__namecall",
     "__call",
     "__iter",
-    "__len"),
+    "__len",
 
     "__eq",
 
-    LUAU_SHUFFLE8(LUAU_COMMA_SEP,
     "__add",
     "__sub",
     "__mul",
@@ -50,14 +48,13 @@ const char* const luaT_eventname[] = {
     "__idiv",
     "__mod",
     "__pow",
-    "__unm"),
+    "__unm",
 
-    LUAU_SHUFFLE5(LUAU_COMMA_SEP,
     "__lt",
     "__le",
     "__concat",
     "__type",
-    "__metatable"),
+    "__metatable",
 };
 // clang-format on
 

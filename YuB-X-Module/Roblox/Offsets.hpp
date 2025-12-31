@@ -25,36 +25,36 @@ struct WeakThreadRef
 
 namespace Offsets
 {
-    const uintptr_t Print = REBASE(0x190FDE0);
-    const uintptr_t TaskDefer = REBASE(0x14D1930);
-    const uintptr_t RawScheduler = REBASE(0x755F6E8);
-    const uintptr_t OpcodeLookupTable = REBASE(0x57A6AC0);
-    const uintptr_t ScriptContextResume = REBASE(0x128FC10);
+    const uintptr_t Print = REBASE(0x17C51F0);
+    const uintptr_t TaskDefer = REBASE(0x1284C90);
+    const uintptr_t RawScheduler = REBASE(0x7E1CB88);
+    const uintptr_t OpcodeLookupTable = REBASE(0x5BF4A70);
+    const uintptr_t ScriptContextResume = REBASE(0x101C480);
 
     namespace Luau
     {
-        const uintptr_t ScriptContextResume = 0x7A8;
+        const uintptr_t ScriptContextResume = 0x850;
 
-        const uintptr_t LuaD_Throw = REBASE(0x379CCF0);
-        const uintptr_t Luau_Execute = REBASE(0x37A4540);
-        const uintptr_t LuaO_NilObject = REBASE(0x5303228);
-        const uintptr_t LuaH_DummyNode = REBASE(0x5302C48);
+        const uintptr_t LuaD_Throw = REBASE(0x37D28D0);
+        const uintptr_t Luau_Execute = REBASE(0x37D9E60);
+        const uintptr_t LuaO_NilObject = REBASE(0x5730768);
+        const uintptr_t LuaH_DummyNode = REBASE(0x5730168);
     }
 
     namespace DataModel
     {
-        const uintptr_t Children = 0x60;
-        const uintptr_t GameLoaded = 0x5F0;
-        const uintptr_t ScriptContext = 0x3D0;
+        const uintptr_t Children = 0x70;
+        const uintptr_t GameLoaded = 0x600;
+        const uintptr_t ScriptContext = 0x3F0;
         const uintptr_t FakeDataModelToDataModel = 0x1C0;
 
-        const uintptr_t FakeDataModelPointer = REBASE(0x74287C8);
+        const uintptr_t FakeDataModelPointer = REBASE(0x7D03628);
     }
 
 	namespace ExtraSpace
 	{
 		const uintptr_t Identity = 0x30;
-		const uintptr_t Capabilities = 0x48;
+		const uintptr_t Capabilities = 0x50;
 	}
 }
 
@@ -67,4 +67,4 @@ namespace Roblox
     inline auto ScriptContextResume = (int(__fastcall*)(int64_t, DebuggerResult*, WeakThreadRef**, int32_t, bool, const char*))Offsets::ScriptContextResume;
 }
 
-//Dont forget to update TaskScheduler::DecryptLuaState and Encryptions
+//Dont forget to update TaskScheduler::DecryptLuaState, Encryptions and Structs

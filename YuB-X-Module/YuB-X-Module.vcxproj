@@ -308,9 +308,9 @@
     <ClInclude Include="Dependencies\nlohmann\json.hpp" />
     <ClInclude Include="Dependencies\nlohmann\json_fwd.hpp" />
     <ClInclude Include="Exploit\Environment\Environment.hpp" />
-    <ClInclude Include="Exploit\Environment\Librarys\Closures.hpp" />
-    <ClInclude Include="Exploit\Environment\Librarys\Http.hpp" />
-    <ClInclude Include="Exploit\Environment\Librarys\Miscellaneous.hpp" />
+    <ClInclude Include="Exploit\Environment\Libraries\Closures.hpp" />
+    <ClInclude Include="Exploit\Environment\Libraries\Http.hpp" />
+    <ClInclude Include="Exploit\Environment\Libraries\Miscellaneous.hpp" />
     <ClInclude Include="Exploit\Environment\Yielding\Yielding.hpp" />
     <ClInclude Include="Exploit\Execution\Execution.hpp" />
     <ClInclude Include="Exploit\Globals.hpp" />

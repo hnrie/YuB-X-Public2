@@ -404,10 +404,10 @@
     <ClInclude Include="Exploit\Environment\Environment.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Exploit\Environment\Librarys\Miscellaneous.hpp">
+    <ClInclude Include="Exploit\Environment\Libraries\Miscellaneous.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Exploit\Environment\Librarys\Http.hpp">
+    <ClInclude Include="Exploit\Environment\Libraries\Http.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Exploit\Environment\Yielding\Yielding.hpp">
@@ -521,7 +521,7 @@
     <ClInclude Include="Dependencies\curl\include\curl\websockets.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Exploit\Environment\Librarys\Closures.hpp">
+    <ClInclude Include="Exploit\Environment\Libraries\Closures.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Dependencies\Luau\Common\include\Luau\HashUtil.h">

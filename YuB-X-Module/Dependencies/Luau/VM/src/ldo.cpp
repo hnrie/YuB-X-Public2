@@ -255,7 +255,7 @@ static void performcall(lua_State* L, StkId func, int nresults, bool preparereen
 {
     if (luau_precall(L, func, nresults) == PCRLUA)
     {                                        // is a Lua function?
-        L->ci->flags |= LUA_CALLINFO_RETURN; // Luau_Execute will stop after returning from the stack frame
+        L->ci->flags |= LUA_CALLINFO_RETURN; // luau_execute will stop after returning from the stack frame
 
         bool oldactive = L->isactive;
         L->isactive = true;
@@ -266,11 +266,11 @@ static void performcall(lua_State* L, StkId func, int nresults, bool preparereen
             if (preparereentry)
                 L->status = SCHEDULED_REENTRY;
             else
-                Luau_Execute(L);
+                luau_execute(L);
         }
         else
         {
-            Luau_Execute(L); // call it
+            luau_execute(L); // call it
         }
 
         if (!oldactive)
@@ -412,7 +412,7 @@ static void resume_continue(lua_State* L)
         else
         {
             // Luau continuation; it terminates at the end of the stack or at another C continuation
-            Luau_Execute(L);
+            luau_execute(L);
         }
     }
 }

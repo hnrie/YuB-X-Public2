@@ -25,36 +25,36 @@ struct WeakThreadRef
 
 namespace Offsets
 {
-    const uintptr_t Print = REBASE(0x17E9D00);
-    const uintptr_t TaskDefer = REBASE(0x128E730);
-    const uintptr_t RawScheduler = REBASE(0x81219C8);
-    const uintptr_t OpcodeLookupTable = REBASE(0x5C630F0);
-    const uintptr_t ScriptContextResume = REBASE(0x101EE70);
+    const uintptr_t Print = REBASE(0x17E0070);
+    const uintptr_t TaskDefer = REBASE(0x12A1940);
+    const uintptr_t RawScheduler = REBASE(0x8119EC8);
+    const uintptr_t OpcodeLookupTable = REBASE(0x5C4EE20);
+    const uintptr_t ScriptContextResume = REBASE(0x101D540);
 
     namespace Luau
     {
-        const uintptr_t LuaD_Throw = REBASE(0x383CA10);
-        const uintptr_t Luau_Execute = REBASE(0x3843F34);
-        const uintptr_t LuaO_NilObject = REBASE(0x5794A68);
-        const uintptr_t LuaH_DummyNode = REBASE(0x5794458);
+        const uintptr_t LuaD_Throw = REBASE(0x3826950);
+        const uintptr_t Luau_Execute = REBASE(0x382DE34);
+        const uintptr_t LuaO_NilObject = REBASE(0x577F8B8);
+        const uintptr_t LuaH_DummyNode = REBASE(0x577F2A8);
     }
 
     namespace DataModel
     {
         const uintptr_t Children = 0x70;
-        const uintptr_t GameLoaded = 0x608;
+        const uintptr_t GameLoaded = 0x5F8;
         const uintptr_t ScriptContext = 0x3F0;
         const uintptr_t FakeDataModelToDataModel = 0x1C0;
 
-        const uintptr_t FakeDataModelPointer = REBASE(0x8006F88);
+        const uintptr_t FakeDataModelPointer = REBASE(0x7FF0818);
     }
 
-	namespace ExtraSpace
-	{
-        const uintptr_t RequireBypass = 0x910;
-        const uintptr_t InstanceToLuaState = 0x368;
-        const uintptr_t ScriptContextToResume = 0x850;
-	}
+    namespace ExtraSpace
+    {
+        const uintptr_t RequireBypass = 0x964;
+        const uintptr_t InstanceToLuaState = 0x2B8;
+        const uintptr_t ScriptContextToResume = 0x848;
+    }
 }
 
 namespace Roblox

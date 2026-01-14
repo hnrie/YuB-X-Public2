@@ -16,7 +16,7 @@
 
 #include <string.h>
 
-// Disable c99-designator to avoid the warning in CGOTO dispatch table
+// Disable c99-designator to avoid the warning in computed goto dispatch table
 #ifdef __clang__
 #if __has_warning("-Wc99-designator")
 #pragma clang diagnostic ignored "-Wc99-designator"
@@ -32,7 +32,7 @@
 // ra/rb/rc!
 // 4. When copying an object to any existing object as a field, generally speaking you need to call luaC_barrier! Be careful with all setobj calls
 // 5. To make 4 easier to follow, please use setobj2s for copies to stack, setobj2t for writes to tables, and setobj for other copies.
-// 6. You can define HARDSTACKTESTS in llimits.h which will aggressively realloc stack; with address sanitizer this should be effective at finding
+// 6. You can define HARDSTACKTESTS in luaconf.h which will aggressively realloc stack; with address sanitizer this should be effective at finding
 // stack corruption bugs
 // 7. Many external Lua functions can call GC! GC will *not* traverse pointers to new objects that aren't reachable from Lua root. Be careful when
 // creating new Lua objects, store them to stack soon.
@@ -192,7 +192,7 @@ inline bool luau_skipstep(uint8_t op)
     return op == LOP_PREPVARARGS || op == LOP_BREAK;
 }
 
-void Luau_Execute(lua_State* L)
+void luau_execute(lua_State* L)
 {
     Roblox::Luau_Execute(L);
 }

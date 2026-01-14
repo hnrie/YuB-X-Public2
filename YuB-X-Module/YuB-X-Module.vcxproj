@@ -129,7 +129,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;YUBXMODULE_EXPORTS;_WINDOWS;_USRDLL;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;YUBXMODULE_EXPORTS;_WINDOWS;_USRDLL;WIN32_LEAN_AND_MEAN;LUAI_GCMETRICS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -168,8 +168,9 @@
     <ClCompile Include="Dependencies\Luau\Ast\src\Lexer.cpp" />
     <ClCompile Include="Dependencies\Luau\Ast\src\Location.cpp" />
     <ClCompile Include="Dependencies\Luau\Ast\src\Parser.cpp" />
-    <ClCompile Include="Dependencies\Luau\Ast\src\StringUtils.cpp" />
-    <ClCompile Include="Dependencies\Luau\Ast\src\TimeTrace.cpp" />
+    <ClCompile Include="Dependencies\Luau\Ast\src\PrettyPrinter.cpp" />
+    <ClCompile Include="Dependencies\Luau\Common\src\StringUtils.cpp" />
+    <ClCompile Include="Dependencies\Luau\Common\src\TimeTrace.cpp" />
     <ClCompile Include="Dependencies\Luau\Compiler\src\BuiltinFolding.cpp" />
     <ClCompile Include="Dependencies\Luau\Compiler\src\Builtins.cpp" />
     <ClCompile Include="Dependencies\Luau\Compiler\src\BytecodeBuilder.cpp" />
@@ -264,14 +265,16 @@
     <ClInclude Include="Dependencies\Luau\Ast\include\Luau\ParseOptions.h" />
     <ClInclude Include="Dependencies\Luau\Ast\include\Luau\Parser.h" />
     <ClInclude Include="Dependencies\Luau\Ast\include\Luau\ParseResult.h" />
-    <ClInclude Include="Dependencies\Luau\Ast\include\Luau\StringUtils.h" />
-    <ClInclude Include="Dependencies\Luau\Ast\include\Luau\TimeTrace.h" />
+    <ClInclude Include="Dependencies\Luau\Ast\include\Luau\PrettyPrinter.h" />
     <ClInclude Include="Dependencies\Luau\Common\include\Luau\Bytecode.h" />
     <ClInclude Include="Dependencies\Luau\Common\include\Luau\BytecodeUtils.h" />
     <ClInclude Include="Dependencies\Luau\Common\include\Luau\Common.h" />
     <ClInclude Include="Dependencies\Luau\Common\include\Luau\DenseHash.h" />
     <ClInclude Include="Dependencies\Luau\Common\include\Luau\ExperimentalFlags.h" />
     <ClInclude Include="Dependencies\Luau\Common\include\Luau\HashUtil.h" />
+    <ClInclude Include="Dependencies\Luau\Common\include\Luau\ScopedSeenSet.h" />
+    <ClInclude Include="Dependencies\Luau\Common\include\Luau\StringUtils.h" />
+    <ClInclude Include="Dependencies\Luau\Common\include\Luau\TimeTrace.h" />
     <ClInclude Include="Dependencies\Luau\Common\include\Luau\Variant.h" />
     <ClInclude Include="Dependencies\Luau\Common\include\Luau\VecDeque.h" />
     <ClInclude Include="Dependencies\Luau\Compiler\include\luacode.h" />
@@ -283,6 +286,7 @@
     <ClInclude Include="Dependencies\Luau\Compiler\src\CostModel.h" />
     <ClInclude Include="Dependencies\Luau\Compiler\src\TableShape.h" />
     <ClInclude Include="Dependencies\Luau\Compiler\src\Types.h" />
+    <ClInclude Include="Dependencies\Luau\Compiler\src\Utils.h" />
     <ClInclude Include="Dependencies\Luau\Compiler\src\ValueTracking.h" />
     <ClInclude Include="Dependencies\Luau\VM\include\lua.h" />
     <ClInclude Include="Dependencies\Luau\VM\include\luaconf.h" />

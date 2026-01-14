@@ -19,8 +19,8 @@
 typedef struct stringtable
 {
     TString** hash; // 0x0
-    uint32_t nuse; // 0x8
-    int size; // 0xC
+    int size; // 0x8
+    uint32_t nuse; // 0xC
 } stringtable;
 // clang-format on
 
@@ -55,10 +55,10 @@ typedef struct stringtable
 // clang-format off
 typedef struct CallInfo
 {
-    const Instruction* savedpc; // 0x0
-    StkId func; // 0x8
-    StkId top; // 0x10
-    StkId base; // 0x18
+    StkId base; // 0x0
+    StkId top; // 0x8
+    const Instruction* savedpc; // 0x10
+    StkId func; // 0x18
     int nresults; // 0x20
     unsigned int flags; // 0x24
 } CallInfo;
@@ -162,37 +162,37 @@ struct lua_ExecutionCallbacks
 // clang-format off
 typedef struct global_State
 {
-    stringtable strt; // 0x0
-    int gcgoal; // 0x10
-    int gcstepmul; // 0x14
-    int gcstepsize; // 0x18
-    lua_Alloc frealloc; // 0x20
-    void* ud; // 0x28
-    uint8_t currentwhite; // 0x30
-    uint8_t gcstate; // 0x31
+    uint8_t currentwhite; // 0x0
+    uint8_t gcstate; // 0x1
+    lua_Alloc frealloc; // 0x8
+    void* ud; // 0x10
+    stringtable strt; // 0x18
+    GCObject* gray; // 0x28
+    GCObject* grayagain; // 0x30
     GCObject* weak; // 0x38
-    GCObject* grayagain; // 0x40
-    GCObject* gray; // 0x48
+    int gcgoal; // 0x40
+    int gcstepsize; // 0x44
+    int gcstepmul; // 0x48
     size_t GCthreshold; // 0x50
     size_t totalbytes; // 0x58
     struct lua_State* mainthread; // 0x60
-    struct lua_Page* allgcopages; // 0x68
-    struct lua_Page* freegcopages[LUA_SIZECLASSES]; // 0x70
-    struct lua_Page* sweepgcopage; // 0x1B0
-    UpVal uvhead; // 0x1B8
-    struct lua_Page* allpages; // 0x1E0
-    struct lua_Page* freepages[LUA_SIZECLASSES]; // 0x1E8
-    size_t memcatbytes[LUA_MEMORY_CATEGORIES]; // 0x328
+    size_t memcatbytes[LUA_MEMORY_CATEGORIES]; // 0x68
+    struct lua_Page* freegcopages[LUA_SIZECLASSES]; // 0x868
+    struct lua_Page* allpages; // 0x9A8
+    struct lua_Page* sweepgcopage; // 0x9B0
+    struct lua_Page* allgcopages; // 0x9B8
+    UpVal uvhead; // 0x9C0
+    struct lua_Page* freepages[LUA_SIZECLASSES]; // 0x9E8
     struct LuaTable* mt[LUA_T_COUNT]; // 0xB28
-    TString* tmname[TM_N]; // 0xC18
+    TString* tmname[TM_N]; // 0xB80
     TString* ttname[LUA_T_COUNT]; // 0xC28
     TValue pseudotemp; // 0xC80
     TValue registry; // 0xC90
     int registryfree; // 0xCA0
-    struct lua_jmpbuf* errorjmp; // 0xCA8
-    uint64_t rngstate; // 0xCB0
-    uint64_t ptrenckey[4]; // 0xCB8
-    lua_Callbacks cb; // 0xCD8
+    lua_Callbacks cb; // 0xCA8
+    uint64_t rngstate; // 0xCF8
+    struct lua_jmpbuf* errorjmp; // 0xD00
+    uint64_t ptrenckey[4]; // 0xD08
     lua_ExecutionCallbacks ecb; // 0xD28
     void (*udatagc[LUA_UTAG_LIMIT])(lua_State*, void*); // 0xD60
     LuaTable* udatamt[LUA_UTAG_LIMIT]; // 0x1160
@@ -212,27 +212,27 @@ struct lua_State
 {
     CommonHeader;
     uint8_t status; // 0x3
-    uint8_t singlestep; // 0x4
+    uint8_t activememcat; // 0x4
     bool isactive; // 0x5
-    uint8_t activememcat; // 0x6
-    TString* namecall; // 0x8
-    LuaTable* gt; // 0x10
-    UpVal* openupval; // 0x18
-    GCObject* gclist; // 0x20
-    CallInfo* end_ci; // 0x28
-    CallInfo* base_ci; // 0x30
-    LSTATE_STACKSIZE_ENC<int> stacksize; // 0x38
-    int size_ci; // 0x3C
-    unsigned short nCcalls; // 0x40
-    unsigned short baseCcalls; // 0x42
-    int cachedslot; // 0x44
-    global_State* global; // 0x48
-    StkId stack; // 0x50
-    StkId stack_last; // 0x58
-    CallInfo* ci; // 0x60
-    StkId top; // 0x68
-    StkId base; // 0x70
-    RobloxExtraSpace* userdata; // 0x78
+    bool singlestep; // 0x6
+    StkId top; // 0x8
+    global_State* global; // 0x10
+    CallInfo* ci; // 0x18
+    StkId base; // 0x20
+    StkId stack; // 0x28
+    StkId stack_last; // 0x30
+    UpVal* openupval; // 0x38
+    CallInfo* end_ci; // 0x40
+    CallInfo* base_ci; // 0x48
+    unsigned short nCcalls; // 0x50
+    unsigned short baseCcalls; // 0x52
+    int cachedslot; // 0x54
+    TString* namecall; // 0x58
+    GCObject* gclist; // 0x60
+    LSTATE_STACKSIZE_ENC<int> stacksize; // 0x68
+    int size_ci; // 0x6C
+    RobloxExtraSpace* userdata; // 0x70
+    LuaTable* gt; // 0x78
 };
 // clang-format on
 

@@ -34,7 +34,7 @@ namespace Offsets
     namespace Luau
     {
         const uintptr_t LuaD_Throw = REBASE(0x3826950);
-        const uintptr_t Luau_Execute = REBASE(0x382DE34);
+        const uintptr_t Luau_Execute = REBASE(0x382DE30);
         const uintptr_t LuaO_NilObject = REBASE(0x577F8B8);
         const uintptr_t LuaH_DummyNode = REBASE(0x577F2A8);
     }

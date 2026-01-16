@@ -45,14 +45,13 @@ namespace YuB_X_Interface
         {
             string InjectorPath = System.IO.Path.Combine(Application.StartupPath, "YuB-X-Injector.exe");
 
-            // Doesnt work
-            //if (!System.IO.File.Exists(InjectorPath))
-            //{
-            //    using (var WebClient = new System.Net.WebClient())
-            //    {
-            //        WebClient.DownloadFile("https://github.com/YuB-W/Roblox_Injector/releases/download/yubxv2_injector/injector.exe", InjectorPath);
-            //    }
-            //}
+            if (!System.IO.File.Exists(InjectorPath))
+            {
+                using (var WebClient = new System.Net.WebClient())
+                {
+                    WebClient.DownloadFile("https://github.com/vuxqzofx/YuB-X-Injector/raw/refs/heads/main/YuB-X-Injector-V5.exe", InjectorPath);
+                }
+            }
 
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(InjectorPath) { UseShellExecute = true } );
         }

@@ -66,4 +66,4 @@ namespace Roblox
     inline auto ScriptContextResume = (int(__fastcall*)(int64_t, DebuggerResult*, WeakThreadRef**, int32_t, bool, const char*))Offsets::ScriptContextResume;
 }
 
-//Dont forget to update TaskScheduler::DecryptLuaState, Encryptions and Structs
+// Dont forget to update TaskScheduler::DecryptLuaState, Encryptions and Structs

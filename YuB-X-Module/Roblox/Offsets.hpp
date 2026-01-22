@@ -25,18 +25,18 @@ struct WeakThreadRef
 
 namespace Offsets
 {
-    const uintptr_t Print = REBASE(0x17E0070);
-    const uintptr_t TaskDefer = REBASE(0x12A1940);
-    const uintptr_t RawScheduler = REBASE(0x8119EC8);
-    const uintptr_t OpcodeLookupTable = REBASE(0x5C4EE20);
-    const uintptr_t ScriptContextResume = REBASE(0x101D540);
+    const uintptr_t Print = REBASE(0x1737F30);
+    const uintptr_t TaskDefer = REBASE(0x171E450);
+    const uintptr_t RawScheduler = REBASE(0x8056DC8);
+    const uintptr_t OpcodeLookupTable = REBASE(0x5C075F0);
+    const uintptr_t ScriptContextResume = REBASE(0x164A8C0);
 
     namespace Luau
     {
-        const uintptr_t LuaD_Throw = REBASE(0x3826950);
-        const uintptr_t Luau_Execute = REBASE(0x382DE30);
-        const uintptr_t LuaO_NilObject = REBASE(0x577F8B8);
-        const uintptr_t LuaH_DummyNode = REBASE(0x577F2A8);
+        const uintptr_t LuaD_Throw = REBASE(0x3730E90);
+        const uintptr_t Luau_Execute = REBASE(0x3745B60);
+        const uintptr_t LuaO_NilObject = REBASE(0x572CE88);
+        const uintptr_t LuaH_DummyNode = REBASE(0x572C878);
     }
 
     namespace DataModel
@@ -46,13 +46,13 @@ namespace Offsets
         const uintptr_t ScriptContext = 0x3F0;
         const uintptr_t FakeDataModelToDataModel = 0x1C0;
 
-        const uintptr_t FakeDataModelPointer = REBASE(0x7FF0818);
+        const uintptr_t FakeDataModelPointer = REBASE(0x7FA08E8);
     }
 
     namespace ExtraSpace
     {
-        const uintptr_t RequireBypass = 0x964;
-        const uintptr_t InstanceToLuaState = 0x2B8;
+        const uintptr_t RequireBypass = 0x970;
+        const uintptr_t InstanceToLuaState = 0x258;
         const uintptr_t ScriptContextToResume = 0x848;
     }
 }

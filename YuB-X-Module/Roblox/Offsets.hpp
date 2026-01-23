@@ -36,6 +36,7 @@ namespace Offsets
 
     namespace Luau
     {
+        const uintptr_t Luau_Execute = REBASE(0x3745BC0);
         const uintptr_t LuaO_NilObject = REBASE(0x572CEB8);
         const uintptr_t LuaH_DummyNode = REBASE(0x572C8A8);
     }
@@ -45,6 +46,7 @@ namespace Roblox
 {
     inline auto TaskDefer = (int(__fastcall*)(lua_State*))Offsets::TaskDefer;
     inline auto Print = (uintptr_t(__fastcall*)(int, const char*, ...))Offsets::Print;
+    inline auto Luau_Execute = (void(__fastcall*)(lua_State*))Offsets::Luau::Luau_Execute;
     inline auto ScriptContextResume = (int(__fastcall*)(int64_t, DebuggerResult*, WeakThreadRef**, int32_t, bool, const char*))Offsets::ScriptContextResume;
 }
 

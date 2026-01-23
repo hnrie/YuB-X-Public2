@@ -23,8 +23,8 @@ struct RobloxExtraSpace
     std::int32_t Identity; // 0x30
     char Pad3[0x14];
     uintptr_t Capabilities; // 0x48
-    char Pad4[0x40];
-    std::weak_ptr<uintptr_t> Script; // 0x90
+    char Pad4[0x8];
+    std::weak_ptr<uintptr_t> Script; // 0x58
 };
 
 // option for multiple returns in `lua_pcall' and `lua_call'

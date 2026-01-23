@@ -159,7 +159,7 @@ int luaD_rawrunprotected(lua_State* L, Pfunc f, void* ud)
 
 l_noret luaD_throw(lua_State* L, int errcode)
 {
-    Roblox::LuaD_Throw(L, errcode);
+    throw lua_exception(L, errcode);
 }
 #endif
 

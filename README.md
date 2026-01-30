@@ -6,6 +6,5 @@ This roblox executor source is a clean v2 of the YuB-X-Low source and is made to
 - 3 sUNC
 - Level 8
   
-Updated for: version-8b8c34790f814a73   
-Injector: https://github.com/vuxqzofx/Roblox-Injector  
+Updated for: version-4464ba36ceea461e   
 Join https://discord.gg/wJCZ6Wy5qN for more

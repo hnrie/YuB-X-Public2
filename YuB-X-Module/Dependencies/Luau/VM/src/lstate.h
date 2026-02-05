@@ -55,10 +55,10 @@ typedef struct stringtable
 // clang-format off
 typedef struct CallInfo
 {
-    StkId top; // 0x0
+    const Instruction* savedpc; // 0x0
     StkId func; // 0x8
     StkId base; // 0x10
-    const Instruction* savedpc; // 0x18
+    StkId top; // 0x18
     int nresults; // 0x20
     unsigned int flags; // 0x24
 } CallInfo;

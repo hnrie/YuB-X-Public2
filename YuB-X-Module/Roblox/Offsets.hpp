@@ -16,6 +16,7 @@ namespace Offsets
     const uintptr_t RawScheduler = REBASE(0x7E4ED08);
     const uintptr_t OpcodeLookupTable = REBASE(0x5DB4FD0);
     const uintptr_t ScriptContextResume = REBASE(0x1A46070);
+    const uintptr_t GetLuaStateForInstance = REBASE(0x1957070);
 
     namespace Luau
     {
@@ -37,17 +38,17 @@ namespace Offsets
     namespace ExtraSpace
     {
         const uintptr_t RequireBypass = 0x969;
-        const uintptr_t InstanceToLuaState = 0x318;
         const uintptr_t ScriptContextToResume = 0x850;
     }
 }
 
 namespace Roblox
 {
-    inline auto TaskDefer = (int(__fastcall*)(lua_State*))Offsets::TaskDefer;
-    inline auto Print = (uintptr_t(__fastcall*)(int, const char*, ...))Offsets::Print;
+    inline auto Print = (uintptr_t(*)(int, const char*, ...))Offsets::Print;
+    inline auto TaskDefer = (uint64_t(__fastcall*)(lua_State*))Offsets::TaskDefer;
     inline auto Luau_Execute = (void(__fastcall*)(lua_State*))Offsets::Luau::Luau_Execute;
-    inline auto ScriptContextResume = (int(__fastcall*)(int64_t, DebuggerResult*, WeakThreadRef**, int32_t, bool, const char*))Offsets::ScriptContextResume;
+    inline auto GetLuaStateForInstance = (lua_State*(__fastcall*)(uint64_t, uint64_t*, uint64_t*))Offsets::GetLuaStateForInstance;
+    inline auto ScriptContextResume = (uint64_t(__fastcall*)(uint64_t, DebuggerResult*, WeakThreadRef**, uint32_t, uint8_t, uint64_t))Offsets::ScriptContextResume;
 }
 
-// Dont forget to update TaskScheduler::GetGlobalStateForInstance, Encryptions and Structs
+// Dont forget to update Encryptions and Structs

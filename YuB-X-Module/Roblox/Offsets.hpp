@@ -11,18 +11,18 @@ struct DebuggerResult;
 
 namespace Offsets
 {
-    const uintptr_t Print = REBASE(0x1B107C0);
-    const uintptr_t TaskDefer = REBASE(0x1AF6E30);
-    const uintptr_t RawScheduler = REBASE(0x7E4ED08);
-    const uintptr_t OpcodeLookupTable = REBASE(0x5DB4FD0);
-    const uintptr_t ScriptContextResume = REBASE(0x1A46070);
-    const uintptr_t GetLuaStateForInstance = REBASE(0x1957070);
+    const uintptr_t Print = REBASE(0x1B09F20);
+    const uintptr_t TaskDefer = REBASE(0x1AF0340);
+    const uintptr_t RawScheduler = REBASE(0x7EF3C48);
+    const uintptr_t OpcodeLookupTable = REBASE(0x5E36590);
+    const uintptr_t ScriptContextResume = REBASE(0x1A3E620);
+    const uintptr_t GetLuaStateForInstance = REBASE(0x1955D60);
 
     namespace Luau
     {
-        const uintptr_t Luau_Execute = REBASE(0x3A1B950);
-        const uintptr_t LuaO_NilObject = REBASE(0x58CA1E8);
-        const uintptr_t LuaH_DummyNode = REBASE(0x58C98B8);
+        const uintptr_t Luau_Execute = REBASE(0x3A40720);
+        const uintptr_t LuaO_NilObject = REBASE(0x594BCE8);
+        const uintptr_t LuaH_DummyNode = REBASE(0x594B3B8);
     }
 
     namespace DataModel
@@ -32,12 +32,12 @@ namespace Offsets
         const uintptr_t ScriptContext = 0x3F0;
         const uintptr_t FakeDataModelToDataModel = 0x1C0;
 
-        const uintptr_t FakeDataModelPointer = REBASE(0x7D909F8);
+        const uintptr_t FakeDataModelPointer = REBASE(0x7E35858);
     }
 
     namespace ExtraSpace
     {
-        const uintptr_t RequireBypass = 0x969;
+        const uintptr_t RequireBypass = 0x948;
         const uintptr_t ScriptContextToResume = 0x850;
     }
 }

@@ -183,6 +183,9 @@
     <ClCompile Include="Exploit\Environment\Yielding\Yielding.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Dependencies\lz4\lz4.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
     <ClCompile Include="Dependencies\cpr\src\cookies.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -479,6 +482,9 @@
     <ClInclude Include="Dependencies\cpr\include\cpr\util.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Dependencies\lz4\lz4.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
     <ClInclude Include="Dependencies\nlohmann\json_fwd.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -522,6 +528,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Exploit\Environment\Libraries\Closures.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Exploit\Environment\Libraries\Encoding.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Dependencies\Luau\Common\include\Luau\HashUtil.h">

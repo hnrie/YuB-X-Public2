@@ -115,7 +115,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)Dependencies\Luau\Compiler\include;$(ProjectDir)Dependencies\Luau\Common\include;$(ProjectDir)Dependencies\Luau\Ast\include;$(ProjectDir)Dependencies\Luau\VM\include;$(ProjectDir)Dependencies\Luau\VM\src;$(ProjectDir)Dependencies\Luau;$(ProjectDir)Roblox;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Dependencies\Luau\Compiler\include;$(ProjectDir)Dependencies\Luau\Common\include;$(ProjectDir)Dependencies\Luau\Ast\include;$(ProjectDir)Dependencies\Luau\VM\include;$(ProjectDir)Dependencies\Luau\VM\src;$(ProjectDir)Dependencies\Luau;$(ProjectDir);$(ProjectDir)Roblox;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -219,6 +219,9 @@
     <ClCompile Include="Exploit\Environment\Yielding\Yielding.cpp" />
     <ClCompile Include="Exploit\Execution\Execution.cpp" />
     <ClCompile Include="Exploit\TaskScheduler\TaskScheduler.cpp" />
+    <ClCompile Include="Dependencies\lz4\lz4.c">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Communication\Communication.hpp" />
@@ -310,10 +313,13 @@
     <ClInclude Include="Dependencies\Luau\VM\src\ltm.h" />
     <ClInclude Include="Dependencies\Luau\VM\src\ludata.h" />
     <ClInclude Include="Dependencies\Luau\VM\src\lvm.h" />
+    <ClInclude Include="Dependencies\lz4\lz4.h" />
     <ClInclude Include="Dependencies\nlohmann\json.hpp" />
     <ClInclude Include="Dependencies\nlohmann\json_fwd.hpp" />
     <ClInclude Include="Exploit\Environment\Environment.hpp" />
     <ClInclude Include="Exploit\Environment\Libraries\Closures.hpp" />
+    <ClInclude Include="Exploit\Environment\Libraries\Encoding.hpp" />
+    <ClInclude Include="Exploit\Environment\Libraries\Filesystem.hpp" />
     <ClInclude Include="Exploit\Environment\Libraries\Http.hpp" />
     <ClInclude Include="Exploit\Environment\Libraries\Miscellaneous.hpp" />
     <ClInclude Include="Exploit\Environment\Yielding\Yielding.hpp" />

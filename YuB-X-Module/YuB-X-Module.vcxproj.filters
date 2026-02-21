@@ -410,6 +410,9 @@
     <ClInclude Include="Exploit\Environment\Libraries\Http.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Exploit\Environment\Libraries\Encoding.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
     <ClInclude Include="Exploit\Environment\Yielding\Yielding.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>

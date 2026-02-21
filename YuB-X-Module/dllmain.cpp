@@ -14,7 +14,7 @@ void MainThread()
         {
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
             continue;
-		}
+        }
 
         if (SharedVariables::LastDataModel != DataModel)
         {
@@ -24,7 +24,10 @@ void MainThread()
                 continue;
             }
             SharedVariables::LastDataModel = DataModel;
-			SharedVariables::ExecutionRequests.clear();
+            {
+                std::lock_guard<std::mutex> Lock(SharedVariables::ExecutionMutex);
+                SharedVariables::ExecutionRequests.clear();
+            }
 
             TaskScheduler::SetupExploit();
             TaskScheduler::RequestExecution("print(\"YuB-X-Public successfully loaded\")");

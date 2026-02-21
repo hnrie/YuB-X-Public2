@@ -21,18 +21,22 @@ namespace YuB_X_Interface
         {
             try
             {
-                using (TcpClient Client = new TcpClient("127.0.0.1", 6969))
-                using (NetworkStream Stream = Client.GetStream())
+                byte[] ScriptBytes = Encoding.UTF8.GetBytes(ScriptEditor.Text);
+                int ScriptLength = ScriptBytes.Length;
+
+                byte[] LengthBytes = BitConverter.GetBytes(ScriptLength);
+                if (BitConverter.IsLittleEndian)
+                    Array.Reverse(LengthBytes);
+
+                using (TcpClient Client = new TcpClient())
                 {
-                    byte[] ScriptBytes = Encoding.UTF8.GetBytes(ScriptEditor.Text);
-                    int ScriptLength = ScriptBytes.Length;
-
-                    byte[] LengthBytes = BitConverter.GetBytes(ScriptLength);
-                    if (BitConverter.IsLittleEndian)
-                        Array.Reverse(LengthBytes);
-
-                    Stream.Write(LengthBytes, 0, 4);
-                    Stream.Write(ScriptBytes, 0, ScriptBytes.Length);
+                    Client.Connect("127.0.0.1", 6969);
+                    using (NetworkStream Stream = Client.GetStream())
+                    {
+                        Stream.Write(LengthBytes, 0, 4);
+                        Stream.Write(ScriptBytes, 0, ScriptBytes.Length);
+                        Stream.Flush();
+                    }
                 }
             }
             catch (Exception ex)
@@ -41,20 +45,29 @@ namespace YuB_X_Interface
             }
         }
 
-        private void Inject_Click(object sender, EventArgs e)
+        private async void Inject_Click(object sender, EventArgs e)
         {
             string InjectorPath = System.IO.Path.Combine(Application.StartupPath, "YuB-X-Injector.exe");
 
             if (!System.IO.File.Exists(InjectorPath))
             {
                 MessageBox.Show("Press OK to download the injector, this might take a few seconds", "YuB-X-Interface", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                using (var WebClient = new System.Net.WebClient())
+                try
                 {
-                    WebClient.DownloadFile("https://github.com/vuxqzofx/YuB-X-Injector/raw/refs/heads/main/YuB-X-Injector-V5.exe", InjectorPath);
+                    using (var HttpClient = new System.Net.Http.HttpClient())
+                    {
+                        byte[] Data = await HttpClient.GetByteArrayAsync("https://github.com/vuxqzofx/YuB-X-Injector/raw/refs/heads/main/YuB-X-Injector-V5.exe");
+                        System.IO.File.WriteAllBytes(InjectorPath, Data);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to download injector: " + ex.Message, "YuB-X-Interface", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
 
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(InjectorPath) { UseShellExecute = true } );
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(InjectorPath) { UseShellExecute = true });
         }
     }
 }

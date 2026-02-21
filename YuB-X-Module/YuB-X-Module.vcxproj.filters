@@ -413,6 +413,9 @@
     <ClInclude Include="Exploit\Environment\Libraries\Encoding.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Exploit\Environment\Libraries\Instances.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
     <ClInclude Include="Exploit\Environment\Yielding\Yielding.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>

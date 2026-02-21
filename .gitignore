@@ -1,0 +1,69 @@
+# Build output directories
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+build/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.aps
+*.ncb
+*.sdf
+*.opensdf
+*.cachefile
+*.VC.db
+*.VC.opendb
+ipch/
+
+# MSBuild
+*.log
+*.tlog
+*.lastbuildstate
+*.unsuccessfulbuild
+
+# Compiled object files
+*.o
+*.obj
+
+# Compiled dynamic/static libraries
+*.dll
+*.lib
+*.exp
+*.pdb
+*.ilk
+*.map
+
+# Compiled executables
+*.exe
+*.out
+
+# Precompiled headers
+*.pch
+*.gch
+
+# NuGet packages
+packages/
+*.nupkg
+project.lock.json
+
+# .NET
+*.ncrunchsolution
+*.ncrunchproject
+TestResults/
+
+# Rider
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+ehthumbs.db
+Desktop.ini

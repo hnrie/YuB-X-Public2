@@ -234,6 +234,18 @@
     <ClCompile Include="Dependencies\Luau\Common\src\TimeTrace.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Dependencies\imgui\imgui.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\imgui_draw.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\imgui_tables.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\imgui_widgets.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dependencies\Luau\VM\src\lapi.h">
@@ -404,6 +416,9 @@
     <ClInclude Include="Exploit\Environment\Environment.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Exploit\Environment\Libraries\Drawing.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
     <ClInclude Include="Exploit\Environment\Libraries\Miscellaneous.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -555,6 +570,12 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Dependencies\Luau\Common\include\Luau\SmallVector.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\imgui\imgui.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\imgui\imgui_internal.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

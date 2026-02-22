@@ -316,11 +316,12 @@
     <ClInclude Include="Dependencies\lz4\lz4.h" />
     <ClInclude Include="Dependencies\nlohmann\json.hpp" />
     <ClInclude Include="Dependencies\nlohmann\json_fwd.hpp" />
-    <ClInclude Include="Exploit\Environment\Environment.hpp" />
     <ClInclude Include="Exploit\Environment\Libraries\Closures.hpp" />
     <ClInclude Include="Exploit\Environment\Libraries\Encoding.hpp" />
+    <ClInclude Include="Exploit\Environment\Libraries\Environment.hpp" />
     <ClInclude Include="Exploit\Environment\Libraries\Filesystem.hpp" />
     <ClInclude Include="Exploit\Environment\Libraries\Http.hpp" />
+    <ClInclude Include="Exploit\Environment\Libraries\Instances.hpp" />
     <ClInclude Include="Exploit\Environment\Libraries\Miscellaneous.hpp" />
     <ClInclude Include="Exploit\Environment\Yielding\Yielding.hpp" />
     <ClInclude Include="Exploit\Execution\Execution.hpp" />

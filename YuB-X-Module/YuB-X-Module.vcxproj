@@ -234,6 +234,66 @@
     <ClCompile Include="Dependencies\imgui\imgui_widgets.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Dependencies\imgui\imgui_demo.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_allegro5.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_android.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_dx10.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_dx11.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_dx12.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_dx9.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_glfw.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_glut.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_null.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_opengl2.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_opengl3.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_sdl2.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_sdl3.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_sdlgpu3.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_sdlrenderer2.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_sdlrenderer3.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_vulkan.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_wgpu.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_win32.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Communication\Communication.hpp" />
@@ -330,6 +390,35 @@
     <ClInclude Include="Dependencies\nlohmann\json_fwd.hpp" />
     <ClInclude Include="Dependencies\imgui\imgui.h" />
     <ClInclude Include="Dependencies\imgui\imgui_internal.h" />
+    <ClInclude Include="Dependencies\imgui\imconfig.h" />
+    <ClInclude Include="Dependencies\imgui\imstb_rectpack.h" />
+    <ClInclude Include="Dependencies\imgui\imstb_textedit.h" />
+    <ClInclude Include="Dependencies\imgui\imstb_truetype.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_allegro5.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_android.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_dx10.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_dx11.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_dx12.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_dx9.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_glfw.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_glut.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_metal.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_null.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_opengl2.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_osx.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_sdl2.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_sdl3.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_sdlgpu3.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_sdlgpu3_shaders.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_sdlrenderer2.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_sdlrenderer3.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_vulkan.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_wgpu.h" />
+    <ClInclude Include="Dependencies\imgui\backends\imgui_impl_win32.h" />
+    <ClInclude Include="Exploit\Environment\Environment.hpp" />
+    <ClInclude Include="Exploit\Environment\Libraries\Metatable.hpp" />
     <ClInclude Include="Exploit\Environment\Libraries\Closures.hpp" />
     <ClInclude Include="Exploit\Environment\Libraries\Debug.hpp" />
     <ClInclude Include="Exploit\Environment\Libraries\Drawing.hpp" />

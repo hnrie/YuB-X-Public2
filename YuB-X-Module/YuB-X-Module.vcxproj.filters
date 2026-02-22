@@ -249,58 +249,7 @@
     <ClCompile Include="Dependencies\imgui\imgui_demo.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_allegro5.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_android.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_dx10.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="Dependencies\imgui\backends\imgui_impl_dx11.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_dx12.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_dx9.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_glfw.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_glut.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_null.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_opengl2.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_opengl3.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_sdl2.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_sdl3.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_sdlgpu3.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_sdlrenderer2.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_sdlrenderer3.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_vulkan.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependencies\imgui\backends\imgui_impl_wgpu.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Dependencies\imgui\backends\imgui_impl_win32.cpp">

@@ -195,7 +195,7 @@ void Session::Impl::SetMultipart(Multipart&& multipart) {
                 formdata.push_back(
                         {CURLFORM_COPYCONTENTS, reinterpret_cast<const char*>(part.data)});
                 formdata.push_back(
-                        {CURLFORM_CONTENTSLENGTH, reinterpret_cast<const char*>(part.datalen)});
+                        {CURLFORM_CONTENTSLENGTH, reinterpret_cast<const char*>(static_cast<uintptr_t>(part.datalen))});
             } else if (part.is_file) {
                 formdata.push_back({CURLFORM_FILE, part.value.data()});
             } else {
@@ -227,7 +227,7 @@ void Session::Impl::SetMultipart(const Multipart& multipart) {
                 formdata.push_back({CURLFORM_BUFFER, part.value.data()});
                 formdata.push_back({CURLFORM_BUFFERPTR, reinterpret_cast<const char*>(part.data)});
                 formdata.push_back(
-                        {CURLFORM_BUFFERLENGTH, reinterpret_cast<const char*>(part.datalen)});
+                        {CURLFORM_BUFFERLENGTH, reinterpret_cast<const char*>(static_cast<uintptr_t>(part.datalen))});
             } else if (part.is_file) {
                 formdata.push_back({CURLFORM_FILE, part.value.data()});
             } else {

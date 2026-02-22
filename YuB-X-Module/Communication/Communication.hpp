@@ -9,7 +9,7 @@
 #include <cstdint>
 #include <atomic>
 
-namespace Communication
+namespace communication
 {
-	void Initialize();
+    void initialize();
 }

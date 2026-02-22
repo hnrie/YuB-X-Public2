@@ -1,111 +1,111 @@
 #include <Communication/Communication.hpp>
 #include <Exploit/TaskScheduler/TaskScheduler.hpp>
 
-static bool ReadExactSocket(SOCKET Socket, void* Buffer, size_t Size)
+static bool read_exact_socket(SOCKET socket, void* buffer, size_t size)
 {
-    char* Out = static_cast<char*>(Buffer);
-    size_t Total = 0;
-    while (Total < Size)
+    char* out = static_cast<char*>(buffer);
+    size_t total = 0;
+    while (total < size)
     {
-        int Received = recv(Socket, Out + Total, static_cast<int>(Size - Total), 0);
-        if (Received <= 0)
+        int received = recv(socket, out + total, static_cast<int>(size - total), 0);
+        if (received <= 0)
             return false;
-        Total += static_cast<size_t>(Received);
+        total += static_cast<size_t>(received);
     }
     return true;
 }
 
-void TcpServer()
+void tcp_server()
 {
-    WSADATA Wsa;
-    if (WSAStartup(MAKEWORD(2, 2), &Wsa) != 0)
+    WSADATA wsa;
+    if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
         return;
 
-    SOCKET ListenSocket = INVALID_SOCKET;
-    SOCKET ClientSocket = INVALID_SOCKET;
+    SOCKET listen_socket = INVALID_SOCKET;
+    SOCKET client_socket = INVALID_SOCKET;
 
-    addrinfo Hints{};
-    addrinfo* Result = nullptr;
+    addrinfo hints{};
+    addrinfo* result = nullptr;
 
-    Hints.ai_family = AF_INET;
-    Hints.ai_socktype = SOCK_STREAM;
-    Hints.ai_protocol = IPPROTO_TCP;
-    Hints.ai_flags = AI_PASSIVE;
+    hints.ai_family = AF_INET;
+    hints.ai_socktype = SOCK_STREAM;
+    hints.ai_protocol = IPPROTO_TCP;
+    hints.ai_flags = AI_PASSIVE;
 
-    if (getaddrinfo("127.0.0.1", "6969", &Hints, &Result) != 0)
+    if (getaddrinfo("127.0.0.1", "6969", &hints, &result) != 0)
     {
         WSACleanup();
         return;
     }
 
-    ListenSocket = socket(Result->ai_family, Result->ai_socktype, Result->ai_protocol);
-    if (ListenSocket == INVALID_SOCKET)
+    listen_socket = socket(result->ai_family, result->ai_socktype, result->ai_protocol);
+    if (listen_socket == INVALID_SOCKET)
     {
-        freeaddrinfo(Result);
+        freeaddrinfo(result);
         WSACleanup();
         return;
     }
 
-    BOOL Opt = TRUE;
-    setsockopt(ListenSocket, SOL_SOCKET, SO_REUSEADDR, reinterpret_cast<const char*>(&Opt), sizeof(Opt));
-    if (bind(ListenSocket, Result->ai_addr, static_cast<int>(Result->ai_addrlen)) == SOCKET_ERROR)
+    BOOL opt = TRUE;
+    setsockopt(listen_socket, SOL_SOCKET, SO_REUSEADDR, reinterpret_cast<const char*>(&opt), sizeof(opt));
+    if (bind(listen_socket, result->ai_addr, static_cast<int>(result->ai_addrlen)) == SOCKET_ERROR)
     {
-        closesocket(ListenSocket);
-        freeaddrinfo(Result);
+        closesocket(listen_socket);
+        freeaddrinfo(result);
         WSACleanup();
         return;
     }
 
-    freeaddrinfo(Result);
+    freeaddrinfo(result);
 
-    if (listen(ListenSocket, SOMAXCONN) == SOCKET_ERROR)
+    if (listen(listen_socket, SOMAXCONN) == SOCKET_ERROR)
     {
-        closesocket(ListenSocket);
+        closesocket(listen_socket);
         WSACleanup();
         return;
     }
 
     while (true)
     {
-        ClientSocket = accept(ListenSocket, nullptr, nullptr);
-        if (ClientSocket == INVALID_SOCKET)
+        client_socket = accept(listen_socket, nullptr, nullptr);
+        if (client_socket == INVALID_SOCKET)
         {
             Sleep(100);
             continue;
         }
 
-        uint32_t NetLen = 0;
-        if (!ReadExactSocket(ClientSocket, &NetLen, sizeof(NetLen)))
+        uint32_t net_len = 0;
+        if (!read_exact_socket(client_socket, &net_len, sizeof(net_len)))
         {
-            closesocket(ClientSocket);
+            closesocket(client_socket);
             continue;
         }
 
-        uint32_t ScriptLen = ntohl(NetLen);
-        if (ScriptLen == 0 || ScriptLen > (8 * 1024 * 1024))
+        uint32_t script_len = ntohl(net_len);
+        if (script_len == 0 || script_len > (8 * 1024 * 1024))
         {
-            closesocket(ClientSocket);
+            closesocket(client_socket);
             continue;
         }
 
-        std::vector<char> Buffer(ScriptLen);
-        if (!ReadExactSocket(ClientSocket, Buffer.data(), ScriptLen))
+        std::vector<char> buffer(script_len);
+        if (!read_exact_socket(client_socket, buffer.data(), script_len))
         {
-            closesocket(ClientSocket);
+            closesocket(client_socket);
             continue;
         }
 
-        std::string Script(Buffer.data(), Buffer.size());
-        TaskScheduler::RequestExecution(Script);
+        std::string script(buffer.data(), buffer.size());
+        task_scheduler::request_execution(script);
 
-        closesocket(ClientSocket);
+        closesocket(client_socket);
     }
 
-    closesocket(ListenSocket);
+    closesocket(listen_socket);
     WSACleanup();
 }
 
-void Communication::Initialize()
+void communication::initialize()
 {
-    std::thread(TcpServer).detach();
+    std::thread(tcp_server).detach();
 }

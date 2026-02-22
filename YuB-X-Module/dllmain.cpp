@@ -1,48 +1,48 @@
-﻿#include <Exploit/Utils.hpp>
+#include <Exploit/Utils.hpp>
 #include <Exploit/Globals.hpp>
 #include <Communication/Communication.hpp>
 #include <Exploit/TaskScheduler/TaskScheduler.hpp>
 
-void MainThread()
+void main_thread()
 {
-    Communication::Initialize();
+    communication::initialize();
 
     while (true)
     {
-        uintptr_t DataModel = TaskScheduler::GetDataModel();
-        if (!DataModel)
+        uintptr_t data_model = task_scheduler::get_data_model();
+        if (!data_model)
         {
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
             continue;
         }
 
-        if (SharedVariables::LastDataModel != DataModel)
+        if (shared_variables::last_data_model != data_model)
         {
-            if (!Utils::IsInGame(DataModel))
+            if (!utils::is_in_game(data_model))
             {
                 std::this_thread::sleep_for(std::chrono::milliseconds(1000));
                 continue;
             }
-            SharedVariables::LastDataModel = DataModel;
+            shared_variables::last_data_model = data_model;
             {
-                std::lock_guard<std::mutex> Lock(SharedVariables::ExecutionMutex);
-                SharedVariables::ExecutionRequests.clear();
+                std::lock_guard<std::mutex> lock(shared_variables::execution_mutex);
+                shared_variables::execution_requests.clear();
             }
 
-            TaskScheduler::SetupExploit();
-            TaskScheduler::RequestExecution("print(\"YuB-X-Public successfully loaded\")");
+            task_scheduler::setup_exploit();
+            task_scheduler::request_execution("print(\"YuB-X-Public successfully loaded\")");
         }
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
 }
 
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
+BOOL APIENTRY DllMain(HMODULE h_module, DWORD ul_reason_for_call, LPVOID lp_reserved)
 {
     if (ul_reason_for_call == DLL_PROCESS_ATTACH)
     {
-        DisableThreadLibraryCalls(hModule);
-        std::thread(MainThread).detach();
+        DisableThreadLibraryCalls(h_module);
+        std::thread(main_thread).detach();
     }
 
     return TRUE;

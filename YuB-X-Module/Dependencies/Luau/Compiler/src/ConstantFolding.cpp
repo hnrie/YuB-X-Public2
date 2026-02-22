@@ -391,7 +391,7 @@ static void foldInterpString(Constant& result, AstExprInterpString* expr, DenseH
         }
     }
     result.type = Constant::Type_String;
-    result.stringLength = resultLength;
+    result.stringLength = static_cast<unsigned int>(resultLength);
 
     if (resultLength == 0)
     {
@@ -413,8 +413,8 @@ static void foldInterpString(Constant& result, AstExprInterpString* expr, DenseH
         }
     }
     result.type = Constant::Type_String;
-    result.stringLength = resultLength;
-    AstName name = stringTable.getOrAdd(tmp.c_str(), resultLength);
+    result.stringLength = static_cast<unsigned int>(resultLength);
+    AstName name = stringTable.getOrAdd(tmp.c_str(), static_cast<unsigned int>(resultLength));
     result.valueString = name.value;
 }
 

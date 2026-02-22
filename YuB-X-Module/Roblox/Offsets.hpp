@@ -34,7 +34,15 @@ namespace Offsets
 
         const uintptr_t FakeDataModelPointer = REBASE(0x7E35858);
     }
-
+    namespace Scripts {
+        const uintptr_t LocalScriptByteCode              = 0x1A8;
+        const uintptr_t ModuleScriptByteCode             = 0x150;
+                                                         
+        const uintptr_t weak_thread_node                 = 0x180;
+        const uintptr_t weak_thread_ref                  = 0x8;
+        const uintptr_t weak_thread_ref_live             = 0x20;
+        const uintptr_t weak_thread_ref_live_thread      = 0x8;
+}
     namespace ExtraSpace
     {
         const uintptr_t RequireBypass = 0x948;

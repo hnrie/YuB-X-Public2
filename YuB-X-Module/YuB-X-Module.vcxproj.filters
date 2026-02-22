@@ -422,6 +422,9 @@
     <ClInclude Include="Exploit\Environment\Libraries\Miscellaneous.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Exploit\Environment\Libraries\Debug.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
     <ClInclude Include="Exploit\Environment\Libraries\Http.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>

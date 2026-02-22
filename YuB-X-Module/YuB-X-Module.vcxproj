@@ -331,6 +331,7 @@
     <ClInclude Include="Dependencies\imgui\imgui.h" />
     <ClInclude Include="Dependencies\imgui\imgui_internal.h" />
     <ClInclude Include="Exploit\Environment\Libraries\Closures.hpp" />
+    <ClInclude Include="Exploit\Environment\Libraries\Debug.hpp" />
     <ClInclude Include="Exploit\Environment\Libraries\Drawing.hpp" />
     <ClInclude Include="Exploit\Environment\Libraries\Encoding.hpp" />
     <ClInclude Include="Exploit\Environment\Libraries\Environment.hpp" />
